@@ -5,6 +5,11 @@
         protected $name;
         protected $delivery = [];
 
+        /**
+         * @param string $name 
+         * @param string $delivery 
+         */
+
         // construct function to initialize class
         protected function __construct($name, $delivery){
 
@@ -26,23 +31,51 @@
         protected $boughtProducts = [];
         protected $loyalty = false;
         protected $card;
-        protected $discount;
+
+        /**
+         * @param string $userName 
+         * @param string $boughtProducts 
+         * @param bool $loyalty 
+         * @param int $card 
+         */
 
 
-        protected function __construct($userName, $boughtProducts, $loyalty, $card, $cart, $discount){
+        protected function __construct($userName, $boughtProducts, $loyalty, $card, $name, $delivery){
 
             $this -> userName = $userName;
             $this -> boughtProducts = $boughtProducts;
             $this -> loyalty = $loyalty;
             $this -> card = $card;
-            $this -> cart = $cart;
-            $this -> discount = $discount;
         }
 
         protected function isLoyal(){
             return count($boughtProducts) > 10;
         }
 
+    }
+
+    class Product extends OnlineShop{
+        protected $category;
+        protected $price = [];
+        protected $discount;
+
+        /**
+         * @param string $category 
+         * @param int $priceRange 
+         * @param int $discount 
+         */
+
+
+        protected function __construct($category, $price, $discount, $name, $delivery){
+
+            $this -> category = $category;
+            $this -> price = $price;
+            $this -> discount = $discount;
+        }
+
+        protected function hasDiscount(){
+            return $price * .2;
+        }
     }
 
 ?>
