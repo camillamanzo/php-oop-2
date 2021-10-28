@@ -1,81 +1,60 @@
 <?php 
 
-    class OnlineShop{
+    class Product {
 
         protected $name;
-        protected $delivery = [];
+        protected $price;
+        protected $description;
+        protected $picture;
 
-        /**
-         * @param string $name 
-         * @param string $delivery 
-         */
 
-        // construct function to initialize class
-        protected function __construct($name, $delivery){
+        public function __construct($name, $price, $description, $picture){
 
-            $this -> name = $name;
-            $this -> delivery = $delivery;
-        }
+            $this->name = $name;
+            $this->price = $price;
+            $this->description = $description;
+            $this->picture = $picture;
 
-        //  function to check if product is available in italy
-        protected function availableInItaly(){
-
-            return in_array($italy, $delivery);
         }
     }
 
-    // initialized class user part of OnlineShop
-    class User extends OnlineShop{
-
-        protected $userName;
-        protected $boughtProducts = [];
-        protected $loyalty = false;
-        protected $card;
-
-        /**
-         * @param string $userName 
-         * @param string $boughtProducts 
-         * @param bool $loyalty 
-         * @param int $card 
-         */
-
-
-        protected function __construct($userName, $boughtProducts, $loyalty, $card, $name, $delivery){
-
-            $this -> userName = $userName;
-            $this -> boughtProducts = $boughtProducts;
-            $this -> loyalty = $loyalty;
-            $this -> card = $card;
-        }
-
-        protected function isLoyal(){
-            return count($boughtProducts) > 10;
-        }
-
+    class UsedProduct extends Product{
+        // ::parent
     }
 
-    class Product extends OnlineShop{
-        protected $category;
-        protected $price = [];
-        protected $discount;
+    class Cart {
 
-        /**
-         * @param string $category 
-         * @param int $priceRange 
-         * @param int $discount 
-         */
+        protected $products = [];
 
+        public function getPrice(){
+            
+            foreach ($this->products as $product){
+                $this->$price += $price;
+            } return $price;
+        } 
 
-        protected function __construct($category, $price, $discount, $name, $delivery){
-
-            $this -> category = $category;
-            $this -> price = $price;
-            $this -> discount = $discount;
-        }
-
-        protected function hasDiscount(){
-            return $price * .2;
+        public function addProduct($product){
+            array_push($this->products, $product);
         }
     }
+?>
+
+<?php 
+    $scienceBook = new Product ('Einstein', 20, 'Book abount Einstein', 'noPic');
+    $book2 = new Product ('ciao', 23, 'Book abount Ciao', 'Pic');
+    $book3 = new Product ('vero', 30, 'Book abount vero', 'noPic');
+    var_dump($scienceBook, $book2, $book3); 
+
+
+    $newCart = new Cart ();
+    var_dump($newCart);
+
+    $newCart -> addProduct($scienceBook);
+    $newCart -> addProduct($book2);
+    $newCart -> addProduct($book3);
+    var_dump($newCart);
+    var_dump($newCart -> getPrice());
+
 
 ?>
+
