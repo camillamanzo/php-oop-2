@@ -45,7 +45,7 @@
         }
 
         public function getGenre(){
-            return $this-> name;
+            return $this-> genre;
         }
 
         public function setGenre($genre){

@@ -17,6 +17,40 @@
 <body>
     <h1>My Online Book Store</h1>
     <h2>Clients:</h2>
+
+    <hr>
+
+    <?php foreach($users as $user){ ?>
+
+        <h3>Name: <?= $user->getUserName() ?></h3>
+
+        <?php foreach($user->getCart() as $product){ ?>
+            <h4>Cart: <?= $product->getName() ?></h4>
+        <?php } ?>
+
+        <?php foreach($user->getCards() as $cardElement){ ?>
+            <h4>Card: <?= $cardElement->getNumber() ?></h4>
+        <?php } ?>
+
+        <hr>
+
+    <?php } ?>
+
+    <hr>
+
+    <h2>Products:</h2>
+
+    <hr>
+
+    <?php foreach($books as $book){ ?>
+
+        <h3>Title: <?= $book->getName() ?></h3>
+        <h4>Genre: <?= $book->getGenre() ?></h4>
+        <h4>Price: <?= $book->getPrice() ?> $</h4>
+        <hr>
+
+    <?php } ?>
+
     
     
 </body>

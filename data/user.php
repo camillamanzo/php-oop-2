@@ -1,10 +1,10 @@
 <?php 
     class User {
         protected $userName;
-        protected $cards = [];
-        protected $cart = [];
+        protected $cards;
+        protected $cart;
 
-        public function __construct($userName, $cards, $cart)
+        public function __construct($userName, $cards = [], $cart = [])
         {
             $this->userName = $userName;
             $this->cards = $cards;
@@ -51,10 +51,10 @@
         }
     }
 
-    class Premium {
+    class Premium extends User{
         protected $discount;
 
-        public function __construct($discount, $userName, $cards, $cart)
+        public function __construct($discount, $userName, $cards = [], $cart = [])
         {
             $this->discount = $discount;
 
